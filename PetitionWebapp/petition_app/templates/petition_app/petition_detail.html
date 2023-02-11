@@ -34,26 +34,17 @@
                     <!--Card content-->
                     <div class="card-body">
                         <!--Title-->
-                        <h4 style="direction: rtl;text-align:right;" class="card-title"> <strong>درخواست ثبت بناهای ارزشمند در معرض تخریب بافت تاریخی شیراز</strong></h4>
+                        <h4 style="direction: rtl;text-align:right;" class="card-title"> <strong>{{ petition.name }}</strong></h4>
                         <p style="direction: rtl;text-align:right;" class="card-text">
-                            <br />جناب آقای عزت‌الله ضرغامی
-                            وزیر محترم میراث فرهنگی، گردشگری و صنایع دستی
-                            <br />
-                            <br />با سلام و احترام
-                            همان گونه که مستحضرید، بافت تاریخی شیراز در وسعتی ۳۶۰ هکتاری، دارای تنها ۴۱۰ اثر ثبت ملی و بیش از دوهزار اثر تاریخی ارزشمند شناسایی‌شده است. متأسفانه به‌دلیل دست‌اندازی‌های بی‌شماری که در دهه‌های اخیر تحت عنوان عملیات‌های توسعه و عمران در بافت‌های فرسوده شهری که عنوانی به‌اشتباه اطلاق‌شده به بافت‌های تاریخی است، بسیاری از بناهای فاخر این شهر به‌بهانه ثبت نبودن به‌صورت کامل از بین رفته‌اند.
-                            در آخرین دست‌اندازی‌ها به این بافت تاریخی و در طرح توسعه ۵۷ هکتاری حرم شاهچراغ (ع)، بسیاری از بناهای ثبتی و غیرثبتی ارزشمند این پهنه در وسعتی چهار هکتاری در ده سال گذشته به‌صورت غیرقانونی توسط نهادهای مسئول تخریب شد‌ه‌اند و اکنون نیز عنوان می‌شود که بناهای ثبتی محدوده عدد قابل توجهی نیست و در صدد هستند تنها با حفظ تک بناهای ثبتی و تخریب دیگر بناها، طرح‌های توسعه بزرگ مقیاسی را در این بافت تاریخی اجرا کنند.
-                            به‌خوبی می دانیم تعداد بناهای ارزشمند ثبت‌نشده این محدوده عدد قابل توجهی است که به‌واسطه فشارهای نهادهای قدرت و طرفدار توسعه بدون ضابطه، پرونده ثبتی این بناها سال‌هاست به حالت تعلیق در آمده و متولیان استانی به‌صورت تعمدی از ارسال پرونده‌های ثبتی این بناها جلوگیری کرده‌اند تا جواز تخریب در این پهنه ۵۷ هکتاری راحت‌تر گرفته شود.
-                            لذا خواهشمند است جهت جلوگیری از دست‌اندازی‌های بیشتر و در جهت نجات بافت تاریخی شیراز از تخریب‌های سازمان‌یافته، ثبت اضطراری بناهای تاریخی این محدوده در دستور کار فوری آن وزارتخانه قرار گیرد.
-                            <br />
-                            با تشکر
+                            {{ petition.content }}
                         </p>
                         <div class="metadata" style="border:0">
                             <div class="row">
                                 <div class="col-lg-6 fa">
-                                    <b>•</b> شروع کارزار: ٣٠ بهمن ١٤٠٠
+                                    <b>•</b> شروع کارزار: {{ petition.start_date }}
                                 </div>
                                 <div class="col-lg-6 fa">
-                                    <b>•</b> پایان کارزار: ٢٩ اسفند ١٤٠١
+                                    <b>•</b> پایان کارزار: {{ petition.end_date }}
                                 </div>
                                 <div class="col-lg-6">
                                     <b>•</b> از طرف: دغدغه‌مندان حفاظت از بافت‌های تاریخی ایران
@@ -80,9 +71,9 @@
                         <script>
                             function myFunction() {
                                 if (confirm("Are you sure you want to sign the petition?")) {
-                                    href = "{% url 'petition_app:petitions-detail' %}";
+                                    href = "{% url 'petition_app:petitions-sign' petition.id %}";
                                 } else {
-                                    href = "{% url 'index' %}";
+                                    href = "{% url 'petition_app:petitions-detail' petition.id %}";
                                 }
                             }
                         </script>
@@ -96,86 +87,16 @@
                 <h2 style=" font-family: IranSans;direction:rtl;text-align:right;margin:20px;">افرادی که از این کارزار حمایت کرده‌اند:</h2>
             </div>
             <div class="users">
+                {% for user in petition.user_signed %}
                 <div class="user-preview">
                     <div class="user-img">
-                        <img class="user-img" src="https://www.karzar.net/uploads/thumbs//profile/2023/02/97x97_04081675600680znkh2kzk0k28rvimhapazvhmracmqgrngdelo9vr.jpg">
+                        <img class="user-img" src="{{ user.profile_photo }}">
                     </div>
                     <div class="user-name">
-                        امین مقدم
+                        {{ user.username }}
                     </div>
                 </div>
-                <div class="user-preview">
-                    <div class="user-img">
-                        <img class="user-img" src="https://www.karzar.net/uploads/thumbs//profile/2023/02/97x97_05241675432497fuyc9nhp9x8oeeu5jnhfenmacydqgyhtseaxoszr.jpg">
-                    </div>
-                    <div class="user-name">
-                        امین مقدم
-                    </div>
-                </div>
-                <div class="user-preview">
-                    <div class="user-img">
-                        <img class="user-img" src="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=75&amp;d=identicon&amp;r=g">
-                    </div>
-                    <div class="user-name">
-                        امین مقدم
-                    </div>
-                </div>
-                <div class="user-preview">
-                    <div class="user-img">
-                        <img class="user-img" src="https://www.karzar.net/uploads/thumbs//profile/2022/12/97x97_08471672507045kcq8x3fsm4proa4wft3srrxdt4tchzhemattgqcg.jpg">
-                    </div>
-                    <div class="user-name">
-                        امین مقدم
-                    </div>
-                </div>
-                <div class="user-preview">
-                    <div class="user-img">
-                        <img class="user-img" src="https://www.karzar.net/uploads/thumbs//profile/2023/01/97x97_09231674366836icjq0lwhd9c6tzm4oykghudmvultcybbtkzg9yfe.jpg">
-                    </div>
-                    <div class="user-name">
-                        امین مقدم
-                    </div>
-                </div>
-                <div class="user-preview">
-                    <div class="user-img">
-                        <img class="user-img" src="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=75&amp;d=identicon&amp;r=g">
-                    </div>
-                    <div class="user-name">
-                        امین مقدم
-                    </div>
-                </div>
-                <div class="user-preview">
-                    <div class="user-img">
-                        <img class="user-img" src="https://www.karzar.net/uploads/thumbs//profile/2022/12/97x97_04171671799671cymrpjmzxdjvcxyzrukq4qh9mwtldcrqu86mwdnm.jpg">
-                    </div>
-                    <div class="user-name">
-                        امین مقدم
-                    </div>
-                </div>
-                <div class="user-preview">
-                    <div class="user-img">
-                        <img class="user-img" src="https://www.karzar.net/uploads/thumbs//profile/2022/12/97x97_09181670219294tae8uxiawddppzvpy8qfmegg48w9ozv5v3opg1bl.jpg">
-                    </div>
-                    <div class="user-name">
-                        امین مقدم
-                    </div>
-                </div>
-                <div class="user-preview">
-                    <div class="user-img">
-                        <img class="user-img" src="https://www.karzar.net/uploads/thumbs//profile/2023/02/97x97_05241675432497fuyc9nhp9x8oeeu5jnhfenmacydqgyhtseaxoszr.jpg">
-                    </div>
-                    <div class="user-name">
-                        امین مقدم
-                    </div>
-                </div>
-                <div class="user-preview">
-                    <div class="user-img">
-                        <img class="user-img" src="https://www.gravatar.com/avatar/d41d8cd98f00b204e9800998ecf8427e?s=75&amp;d=identicon&amp;r=g">
-                    </div>
-                    <div class="user-name">
-                        مشاهده سایر اعضا ویژه
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </form>
         <!-- Card deck -->
