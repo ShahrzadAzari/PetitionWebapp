@@ -600,21 +600,38 @@ footer {
 
         <!--middlePart-->
         <form method="post">
+            
             {% csrf_token %}
+
             <p style="font-size:25px;text-align:center;margin-top:20px;"><strong>:ویرایش اطلاعات کاربر</strong></p>
 
             <div class="item">
                 <label for="name">نام کاربری</label>
                 <input id="name" type="text" name="name" value="{{user.username}}"/>
+                {% if form.errors.username %}
+                <div class="alert alert-danger">
+                    {{ form.errors.username }}
+                </div>
+                {% endif %}
             </div>
             <div class="item">
                 <label for="phone">شماره موبایل</label>
                 <input id="phone" type="number" name="phone" value="{{user.phone_number}}"/>
+                {% if form.errors.phone_number %}
+                <div class="alert alert-danger">
+                    {{ form.errors.phone_number }}
+                </div>
+                {% endif %}
             </div>
 
             <div class="item">
                 <label for="meli_code">کد ملی</label>
                 <input id="meli_code" type="meli_code" name="meli_code" value="{{user.meli_code}}"/>
+                {% if form.errors.meli_code %}
+                <div class="alert alert-danger">
+                    {{ form.errors.meli_code }}
+                </div>
+                {% endif %}
             </div>
 
             <div class="item">
@@ -625,6 +642,11 @@ footer {
             <div class="item">
                 <label for="email">ایمیل</label>
                 <input id="email" type="email" name="email" value="{{user.email}}"/>
+                {% if form.errors.email %}
+                <div class="alert alert-danger">
+                    {{ form.errors.email }}
+                </div>
+                {% endif %}
             </div>
 
             <div class="item">

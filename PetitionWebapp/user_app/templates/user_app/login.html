@@ -16,16 +16,22 @@
         {% include "./header-section.html" %}
 
         <!--middlePart-->
-        <form method="post">
+        <form method="post" action='{% url 'user_app:user-login' %}'>
             {% csrf_token %}
             <div class="banner">
                 <h1 style="font-family: IranSans;">!برای حمایت از کارزار آن را امضا کنید</h1>
             </div>
             <p style="font-size:25px;text-align:center;margin-top:20px;"><strong>:اطلاعات کاربر</strong></p>
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    {{ form.errors }}
+                </div>
+            {% endif %}
             <div class="item">
-                <label for="name"><span>*</span>نام کاربری</label>
-                <input id="name" type="text" name="name" value="{{ user.username }}" required />
+                <label for="username"><span>*</span>نام کاربری</label>
+                <input id="username" type="text" name="username" required />
             </div>
+            
             <div class="item">
                 <label for="password"><span>*</span>رمز عبور</label>
                 <input id="password" type="text" name="password" required />
