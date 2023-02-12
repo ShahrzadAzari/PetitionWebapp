@@ -606,8 +606,8 @@ footer {
             <p style="font-size:25px;text-align:center;margin-top:20px;"><strong>:ویرایش اطلاعات کاربر</strong></p>
 
             <div class="item">
-                <label for="name">نام کاربری</label>
-                <input id="name" type="text" name="name" value="{{user.username}}"/>
+                <label for="username">نام کاربری</label>
+                <input id="username" type="text" name="name" value="{{user.username}}"/>
                 {% if form.errors.username %}
                 <div class="alert alert-danger">
                     {{ form.errors.username }}
@@ -650,13 +650,13 @@ footer {
             </div>
 
             <div class="item">
-                <label for="date">تاریخ تولد</label>
-                <input type="date" id="date" name="date" value="{{user.birthdate}}">
+                <label for="birthdate">تاریخ تولد</label>
+                <input type="date" id="birthdate" name="birthdate" value="{{user.birthdate}}">
             </div>
 
             <div class="item">
-                <label for="myFile">عکس پروفایل</label>
-                <input type="file" id="myFile" name="filename" value="{{user.profile_photo}}">
+                <label for="profile_photo">عکس پروفایل</label>
+                <input type="file" id="profile_photo" name="profile_photo" value="{{user.profile_photo}}">
             </div>
 
             <div class="question">
