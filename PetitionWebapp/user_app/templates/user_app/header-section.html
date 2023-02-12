@@ -8,9 +8,11 @@
                     <button onclick="window.location.href='{% url 'petition_app:petitions-create' %}';" class="create-campaign-btn">
                         ایجاد کارزار
                     </button>
+                    {% if request.user.pk %}
                     <button onclick="window.location.href='{% url 'user_app:profile-update' request.user.pk %}';">
                         پنل کاربری
                     </button>
+                    {% endif %}
                     <button onclick="myFunction()">
                         <script>
                             function myFunction() {
@@ -18,7 +20,7 @@
                                 alert("There is no news today!")
                             }
                         </script>
-                        <img src="../../../static/bell/logo.png" width="30px;"/>
+                        <img src="../../../static/image/bell.png" width="30px;"/>
                     </button>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
