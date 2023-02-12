@@ -41,7 +41,7 @@ urlpatterns = [
     path('rules/', RuleView.as_view(), name='rules'),
     path('admin/', admin.site.urls),
     path('petitions/', include('petition_app.urls')),
-    path('users/', include('user_app.urls')),
+    path('accounts/', include('user_app.urls')),
 
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('redoc', schema_view.with_ui('redoc', cache_timeout=0), name='schema-redoc'),

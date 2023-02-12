@@ -76,7 +76,7 @@ class LogoutView(View):
         return redirect('user_app:user-login')
 
 
-class HomePageView(LoginRequiredMixin, TemplateView):
+class HomePageView(TemplateView):
     template_name = 'user_app/homepage.html'
 
     def get_context_data(self, **kwargs):
